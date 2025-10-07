@@ -1,0 +1,41 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Montserrat', Arial, sans-serif;
+    background: #fff;
+    color: #333;
+}
+
+header {
+    padding: 2rem 0 0 0;
+
+}
+
+ h1 {
+    font-size: 3rem;
+    color: #f58220;
+    font-weight: 700;
+    margin-bottom: 3rem;
+    font-family: 'Motserrat', Arial, sans-serif;
+    letter-spacing: 1px;
+}
+
+.gallery {
+    width: 100%;
+   display: grid;
+   grid-template-columns: repeat(4, 1fr);
+   grid-template-columns: reapeat(2,1fr);
+   gap: 0; 
+}
+
+.gallery .meal img {
+    width: 100;
+    height: 300px;
+    object-fit: cover;
+    display: block;
+}
+

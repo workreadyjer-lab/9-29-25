@@ -1,0 +1,162 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: 'montserrat', 'Arial', 'sans-serif';
+    color: white;
+}
+
+.container {
+    background: url('hero.jpg') no-repeat center  center/cover;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    position: relative;
+}
+
+.container::after{
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.62);
+    z-index: 1;
+
+}
+
+header, .content{
+    position: relative;
+    z-index: 2;
+}
+
+header{
+    display: flex;
+    justify-content: space-between;
+    padding: 28px 55px 0 55px;
+    font-size: 14px;
+}
+.logo img{
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    background: white;
+    object-fit: contain;
+}
+
+nav a { 
+ color: white;
+ margin-left: 38px;
+ text-decoration: none;
+ font-weight: 300;
+ letter-spacing: 1px;
+ font-size: 16px;
+ transition: color 0.2s;
+}
+
+
+nav a.signup{
+    font-weight: 500;
+}
+nav a:hover{
+    text-decoration: underline;
+    color: #f58220;
+}
+.content{
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    padding-left: 55px;
+}
+
+
+.content h1 {
+    font-family: 'Montserrat', 'Arial', sans-serif;
+    font-weight: 300;
+    font-size: 3.1rem;
+    max-width: 650px;
+    line-height: 1.19;
+    margin: 0;
+    letter-spacing: 1px;
+}
+.buttons{   
+    margin-top: 32px;
+    display: flex;
+    gap: 12px;
+    flex-direction: row; 
+    align-items: center;
+}
+
+.btn-orange {
+    background-color: #f58220;
+    border: none;
+    padding: 13px 35px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 25px;
+    margin-right: 17px;
+    font-weight: 400;
+    transition: background 0.2s;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+}
+
+.btn-orange:hover {
+    background-color:#e3701b;
+    
+}
+.btn-outline {
+    background-color: transparent;
+    border: 1px solid #f58220;
+    padding: 13px 35px;
+    color: #f58220;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 25px;
+    font-weight: 400;
+    transition: background 0.2s, color 0.2s;
+}
+.btn-outline:hover{
+    background: #f58220;
+    color: white;
+}
+@media (max-width: 900px) {
+    header, .content {
+        padding-left: 22px;
+        padding-right: 22px;
+    }
+    .content h1 {
+        font-size: 2.1rem;
+        max-width: 90vw;
+    }
+    nav a { 
+        margin-left: 18px;
+        font-size: 14px;
+    }
+    .logo img{
+        height: 44px;
+        width:44px;
+    }
+    .btn-orange, .btn-outline {
+        padding: 10px 18px;
+        font-size: 14px;
+    }
+    }
+    @media(max-width: 600px){
+        header, .content{
+            padding-left: 8px;
+            padding-right: 8px;
+        }
+        content h1{
+            font-size: 1.4rem;
+        }
+    }
+    .buttons {
+        flex-direction: row;
+    }
+    .btn-orange, .btn outline{
+        width: auto;
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+
+

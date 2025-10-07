@@ -1,0 +1,93 @@
+*{
+margin: 0;
+padding: 0; 
+box-sizing: border-box;
+
+}
+
+body {
+    font-family: 'Helvetica Neue', sans-serif;
+    background: 
+        linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+        url('back-customers.jpg') no-repeat center center/cover;
+    color: white;
+    min-height: 100vh;
+    padding: 50px 20px;
+}
+
+.testimonials {
+    text-align: center;
+    max-width: 1200px;
+    margin: 150px auto 0;
+}
+
+.testimonials h2 {
+    font-size: 32px;
+    text-transform: uppercase;
+    margin-bottom: 40px;
+    color: #fff;
+    position: relative;
+    text-align: center;
+}
+
+.testimonials h2::after {
+    content : '';
+    display: block;
+    width: 50px;
+    height: 3px;
+    background: #ffb347;
+    margin: 10px auto 0;
+
+}
+
+.testimonial-container {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.testimonial {
+    background-color: transparent;
+    border-radius: 8px;
+    padding: 20px;
+    max-width: 300px;
+    position: relative;
+    
+}
+
+.testimonial .quote {
+    font-size: 60px;
+    line-height: 1;
+    margin-bottom: 10px;
+    color: #ffb347;
+    font-weight: bold;
+}
+
+
+.testimonial .text {
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    color: #fff;
+
+}
+
+
+.customer{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.customer img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid #fff;
+}
+
+.customer span {
+    font-weight: 600;
+    color: #fff;
+}

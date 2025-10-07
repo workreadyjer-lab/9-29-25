@@ -5,6 +5,7 @@ body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+   
 }
 
 .section-features {
@@ -15,11 +16,9 @@ body {
 
 
 /*feature grid*/
-.features {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    gap: 20px;
-    padding: 20px;
+.features-grid {
+    display: flex;
+    flex-direction: row;
 
 }
 
@@ -34,11 +33,16 @@ body {
 
 
 /*icon*/
-.icon {
+/* .icon {
     width: 24px;
     height: 24px;
     display: inline-block;
     vertical-align: middle;
+} */
+
+ion-icon {
+    width: 50px;
+    height: 50px;
 }
 
 h2 {

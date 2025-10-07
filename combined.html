@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Combined Projects</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        
+        .section {
+            margin-bottom: 50px;
+            padding: 30px;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+        }
+        
+        .section h2 {
+            color: #333;
+            border-bottom: 3px solid #007bff;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        
+        /* Button Generator Styles */
+        #buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        #buttons button {
+            margin: 5px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        
+        .controls {
+            margin-top: 20px;
+        }
+        
+        label, select {
+            font-size: 16px;
+            margin-right: 10px;
+        }
+        
+        select {
+            padding: 5px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        
+        /* Multiplication Table Styles */
+        #multiplication-btn {
+            background-color: #28a745;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-bottom: 20px;
+        }
+        
+        #multiplication-btn:hover {
+            background-color: #218838;
+        }
+        
+        #multiplication-list {
+            background-color: white;
+            border-radius: 5px;
+            padding: 15px;
+            border: 1px solid #ddd;
+        }
+        
+        #multiplication-list li {
+            padding: 8px;
+            margin: 5px 0;
+            background-color: #e9ecef;
+            border-radius: 3px;
+            list-style-type: none;
+        }
+        
+        /* Navigation */
+        nav {
+            background-color: #007bff;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+        
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 20px;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 8px 16px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        
+        nav a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="#button-generator">Button Generator</a></li>
+            <li><a href="#multiplication-table">Multiplication Table</a></li>
+        </ul>
+    </nav>
+
+    <!-- Button Generator Section -->
+    <section id="button-generator" class="section">
+        <h2>Button Generator</h2>
+        <p>This section generates 10 buttons with random colors. You can change all button colors using the dropdown below.</p>
+        
+        <div id="buttons"></div>
+        
+        <div class="controls">
+            <label for="color">Pick a color:</label>
+            <select name="color" id="color">
+                <option value="">Choose a color</option>
+                <option value="red">Red</option>
+                <option value="green">Green</option>
+                <option value="blue">Blue</option>
+                <option value="random">Random</option>
+                <option value="reset">Reset to Original</option>
+            </select>
+        </div>
+    </section>
+
+    <!-- Multiplication Table Section -->
+    <section id="multiplication-table" class="section">
+        <h2>Multiplication Table Generator</h2>
+        <p>Click the button below to generate a multiplication table for any number you choose.</p>
+        
+        <button id="multiplication-btn" onclick="createmulti()">Generate Multiplication Table</button>
+        <ul id="multiplication-list"></ul>
+    </section>
+
+    <script>
+        // Button Generator JavaScript
+        const originalColors = [];
+
+        function getRandomColor() {
+            const letters = '0123456789ABCDEF';
+            let color = '#';
+            for (let i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
+        }
+
+        function createButtons() {
+            const container = document.getElementById('buttons');
+            container.innerHTML = '';
+            originalColors.length = 0;
+            for (let i = 0; i < 10; i++) {
+                const btn = document.createElement('button');
+                const color = getRandomColor();
+                btn.innerText = `Button ${i + 1}`;
+                btn.style.backgroundColor = color;
+                originalColors.push(color);
+                container.appendChild(btn);
+            }
+        }
+
+        function changeColor(action) {
+            const buttons = document.querySelectorAll('#buttons button');
+            buttons.forEach((btn, index) => {
+                if (action === 'random') {
+                    btn.style.backgroundColor = getRandomColor();
+                } else if (action === 'reset') {
+                    btn.style.backgroundColor = originalColors[index];
+                } else if (action) {
+                    btn.style.backgroundColor = action;
+                }
+            });
+        }
+
+        // Multiplication Table JavaScript
+        function createmulti(){
+            let input = Number(window.prompt("Select a number:"));
+            const list = document.getElementById("multiplication-list");
+            list.innerHTML = ''; // Clear previous results
+            
+            if (input && !isNaN(input)) {
+                for(let i = 1; i < 11; i++){
+                    let item = document.createElement("li");
+                    item.innerText = `${input} × ${i} = ${input * i}`;
+                    list.appendChild(item);
+                }
+            }
+        }
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', () => {
+            createButtons();
+            const select = document.getElementById('color');
+            select.addEventListener('change', function() {
+                changeColor(this.value);
+            });
+        });
+    </script>
+</body>
+</html>

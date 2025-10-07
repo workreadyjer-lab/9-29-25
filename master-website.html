@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complete Portfolio Website</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            padding: 15px 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 10px 20px;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+
+        nav a:hover {
+            background: #007bff;
+            transform: translateY(-2px);
+        }
+
+        /* Section Styling */
+        section {
+            min-height: 100vh;
+            padding: 100px 20px 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 50px;
+            font-size: 1.2rem;
+        }
+
+        /* Button Generator Section */
+        #button-generator {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        #button-generator .section-title {
+            color: white;
+        }
+
+        #buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+            margin-bottom: 30px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        #buttons button {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 25px;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        #buttons button:hover {
+            transform: scale(1.05);
+        }
+
+        .controls {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .controls select {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 25px;
+            font-size: 16px;
+            background: white;
+            color: #333;
+            cursor: pointer;
+        }
+
+        /* Multiplication Table Section */
+        #multiplication-table {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+        }
+
+        #multiplication-table .section-title {
+            color: white;
+        }
+
+        #multiplication-btn {
+            background: white;
+            color: #f5576c;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 25px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            margin: 0 auto 30px;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+
+        #multiplication-btn:hover {
+            transform: scale(1.05);
+        }
+
+        #multiplication-list {
+            max-width: 600px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 20px;
+            backdrop-filter: blur(10px);
+        }
+
+        #multiplication-list li {
+            list-style: none;
+            padding: 10px;
+            margin: 5px 0;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        /* Testimonials Section */
+        #testimonials {
+            background: 
+                linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+                url('back-customers.jpg') no-repeat center center/cover;
+            color: white;
+            text-align: center;
+        }
+
+        #testimonials .section-title {
+            color: white;
+            position: relative;
+        }
+
+        #testimonials .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 3px;
+            background: #ffb347;
+            margin: 20px auto;
+        }
+
+        .testimonial-container {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .testimonial {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 30px;
+            max-width: 350px;
+            backdrop-filter: blur(10px);
+        }
+
+        .testimonial .quote {
+            font-size: 60px;
+            color: #ffb347;
+            line-height: 1;
+            margin-bottom: 15px;
+        }
+
+        .testimonial .text {
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .customer {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .customer img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 2px solid white;
+        }
+
+        /* Cities Section */
+        #cities {
+            background: #f8f9fa;
+            color: #333;
+        }
+
+        .underline {
+            width: 80px;
+            height: 3px;
+            background: #e67e22;
+            margin: 0 auto 50px;
+        }
+
+        .cities-container {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .city {
+            background: white;
+            border-radius: 15px;
+            width: 280px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        .city:hover {
+            transform: translateY(-10px);
+        }
+
+        .city img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .city h3 {
+            padding: 20px;
+            font-size: 1.3rem;
+            color: #333;
+        }
+
+        .city-info {
+            padding: 0 20px 20px;
+        }
+
+        .city-info p {
+            margin: 10px 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .city-info i {
+            color: #e67e22;
+            width: 20px;
+        }
+
+        .city-info a {
+            color: #e67e22;
+            text-decoration: none;
+        }
+
+        .city-info a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            #buttons {
+                gap: 10px;
+            }
+
+            .testimonial-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .cities-container {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="#button-generator">Button Generator</a></li>
+            <li><a href="#multiplication-table">Multiplication Table</a></li>
+            <li><a href="#testimonials">Testimonials</a></li>
+            <li><a href="#cities">Cities</a></li>
+        </ul>
+    </nav>
+
+    <!-- Button Generator Section -->
+    <section id="button-generator">
+        <h2 class="section-title">Button Generator</h2>
+        <p class="section-subtitle">Generate 10 buttons with random colors and control their appearance</p>
+        
+        <div id="buttons"></div>
+        
+        <div class="controls">
+            <label for="color">Choose a color scheme:</label>
+            <select name="color" id="color">
+                <option value="">Select an option</option>
+                <option value="red">Red</option>
+                <option value="green">Green</option>
+                <option value="blue">Blue</option>
+                <option value="random">Random Colors</option>
+                <option value="reset">Reset to Original</option>
+            </select>
+        </div>
+    </section>
+
+    <!-- Multiplication Table Section -->
+    <section id="multiplication-table">
+        <h2 class="section-title">Multiplication Table Generator</h2>
+        <p class="section-subtitle">Create multiplication tables for any number</p>
+        
+        <button id="multiplication-btn" onclick="createmulti()">Generate Table</button>
+        <ul id="multiplication-list"></ul>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials">
+        <h2 class="section-title">Our Customers Can't Live Without Us</h2>
+        
+        <div class="testimonial-container">
+            <div class="testimonial">
+                <p class="quote">"</p>
+                <p class="text">Omnifood is just awesome! I just launched a startup which leaves me with no time for cooking, so Omnifood is a life-saver. Now that I got used to it, I couldn't live without my daily meals!</p>
+                <div class="customer">
+                    <img src="customer-1.jpg" alt="Alberto Duncan">
+                    <span>Alberto Duncan</span>
+                </div>
+            </div>
+
+            <div class="testimonial">
+                <p class="quote">"</p>
+                <p class="text">Inexpensive, healthy and great-tasting meals, delivered right to my home. We have lots of food delivery here in Lisbon, but no one comes even close to Omnifood. Me and my family are so in love!</p>
+                <div class="customer">
+                    <img src="customer-2.jpg" alt="Joana Silva">
+                    <span>Joana Silva</span>
+                </div>
+            </div>
+
+            <div class="testimonial">
+                <p class="quote">"</p>
+                <p class="text">I was looking for a quick and easy food delivery service in San Francisco. I tried a lot of them and ended up with Omnifood. Best food delivery service in the Bay Area. Keep up the great work!</p>
+                <div class="customer">
+                    <img src="customer-3.jpg" alt="Milton Chapman">
+                    <span>Milton Chapman</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cities Section -->
+    <section id="cities">
+        <h2 class="section-title">We're Currently In These Cities</h2>
+        <div class="underline"></div>
+
+        <div class="cities-container">
+            <div class="city">
+                <img src="lisbon-3.jpg" alt="Lisbon">
+                <h3>LISBON</h3>
+                <div class="city-info">
+                    <p><i class="fas fa-user"></i> 1600+ happy eaters</p>
+                    <p><i class="fas fa-star"></i> 60+ top chefs</p>
+                    <p><i class="fab fa-twitter"></i> <a href="#">@omnifood_lx</a></p>
+                </div>
+            </div>
+
+            <div class="city">
+                <img src="san-francisco.jpg" alt="San Francisco">
+                <h3>SAN FRANCISCO</h3>
+                <div class="city-info">
+                    <p><i class="fas fa-user"></i> 3700+ happy eaters</p>
+                    <p><i class="fas fa-star"></i> 160+ top chefs</p>
+                    <p><i class="fab fa-twitter"></i> <a href="#">@omnifood_sf</a></p>
+                </div>
+            </div>
+
+            <div class="city">
+                <img src="berlin.jpg" alt="Berlin">
+                <h3>BERLIN</h3>
+                <div class="city-info">
+                    <p><i class="fas fa-user"></i> 2300+ happy eaters</p>
+                    <p><i class="fas fa-star"></i> 110+ top chefs</p>
+                    <p><i class="fab fa-twitter"></i> <a href="#">@omnifood_berlin</a></p>
+                </div>
+            </div>
+
+            <div class="city">
+                <img src="london.jpg" alt="London">
+                <h3>LONDON</h3>
+                <div class="city-info">
+                    <p><i class="fas fa-user"></i> 1200+ happy eaters</p>
+                    <p><i class="fas fa-star"></i> 50+ top chefs</p>
+                    <p><i class="fab fa-twitter"></i> <a href="#">@omnifood_london</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Button Generator JavaScript
+        const originalColors = [];
+
+        function getRandomColor() {
+            const letters = '0123456789ABCDEF';
+            let color = '#';
+            for (let i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
+        }
+
+        function createButtons() {
+            const container = document.getElementById('buttons');
+            container.innerHTML = '';
+            originalColors.length = 0;
+            for (let i = 0; i < 10; i++) {
+                const btn = document.createElement('button');
+                const color = getRandomColor();
+                btn.innerText = `Button ${i + 1}`;
+                btn.style.backgroundColor = color;
+                originalColors.push(color);
+                container.appendChild(btn);
+            }
+        }
+
+        function changeColor(action) {
+            const buttons = document.querySelectorAll('#buttons button');
+            buttons.forEach((btn, index) => {
+                if (action === 'random') {
+                    btn.style.backgroundColor = getRandomColor();
+                } else if (action === 'reset') {
+                    btn.style.backgroundColor = originalColors[index];
+                } else if (action) {
+                    btn.style.backgroundColor = action;
+                }
+            });
+        }
+
+        // Multiplication Table JavaScript
+        function createmulti() {
+            let input = Number(window.prompt("Select a number:"));
+            const list = document.getElementById("multiplication-list");
+            list.innerHTML = '';
+            
+            if (input && !isNaN(input)) {
+                for (let i = 1; i < 11; i++) {
+                    let item = document.createElement("li");
+                    item.innerText = `${input} × ${i} = ${input * i}`;
+                    list.appendChild(item);
+                }
+            }
+        }
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', () => {
+            createButtons();
+            const select = document.getElementById('color');
+            select.addEventListener('change', function() {
+                changeColor(this.value);
+            });
+        });
+    </script>
+</body>
+</html>
